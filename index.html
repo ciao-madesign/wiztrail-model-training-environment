@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<title>WizTrail Training Lab</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>WizTrail Training Lab</h1>
+
+<p class="intro">
+Questo ambiente ti permette di insegnare al modello come valutare la difficoltà reale.
+Ogni feedback modifica direttamente il comportamento dell’algoritmo.
+</p>
+
+<!-- STEP 1 -->
+<div class="step active">
+  <h2>1. Carica GPX</h2>
+  <p>Importa una traccia reale per analizzarla.</p>
+  <input type="file" id="gpxFile">
+  <button onclick="analyzeGPX()">Analizza</button>
+  <div id="debug"></div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+  <h2>2. Analisi modello</h2>
+
+  <p><b>Cosa sta facendo il modello:</b></p>
+
+  <div id="metricsBox"></div>
+
+  <p><b>Risultato:</b></p>
+  <div id="outputBox"></div>
+
+  <button onclick="nextStep()">Continua</button>
+</div>
+
+<!-- STEP 3 -->
+<div class="step">
+  <h2>3. Correggi il modello</h2>
+
+  <p>
+  Qui inserisci la tua valutazione reale.<br>
+  Il modello confronterà questa con il suo output e si aggiornerà.
+  </p>
+
+  <label>
+    Tecnicità reale (0 facile – 100 estremo)
+    <span class="hint">Influenza FRIP, slopeVar e roughness</span>
+  </label>
+  <input type="range" id="tech" min="0" max="100" value="50">
+
+  <label>
+    Confidence
+    <span class="hint">Quanto è affidabile il tuo giudizio</span>
+  </label>
+  <input type="range" id="confidence" min="0" max="1" step="0.1" value="1">
+
+  <button onclick="train()">Aggiorna modello</button>
+</div>
+
+<!-- STEP 4 -->
+<div class="step">
+  <h2>4. Evoluzione modello</h2>
+
+  <div id="trainOutput"></div>
+
+  <canvas id="chart" width="600" height="200"></canvas>
+
+  <h3>Debug live</h3>
+  <div id="modelDebug"></div>
+
+  <button onclick="resetSteps()">Nuovo test</button>
+</div>
+
+<div class="controls">
+  <button onclick="exportModel()">Export</button>
+  <button onclick="importModel()">Import</button>
+</div>
+
+<script src="engine-trainable.js"></script>
+<script src="gpx-parser.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

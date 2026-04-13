@@ -1,0 +1,54 @@
+body {
+  font-family: Arial;
+  max-width: 800px;
+  margin: auto;
+  background: #fafafa;
+}
+
+h1 {
+  text-align: center;
+}
+
+.intro {
+  background: #fff;
+  padding: 10px;
+  border-left: 4px solid #4caf50;
+}
+
+.step {
+  display: none;
+  margin: 20px 0;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+}
+
+.step.active {
+  display: block;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input[type=range] {
+  width: 100%;
+}
+
+#metricsBox, #outputBox {
+  background: #f0f0f0;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.controls {
+  margin-top: 20px;
+  text-align: center;
+}
